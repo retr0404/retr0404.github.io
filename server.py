@@ -1,3 +1,4 @@
+from os import name
 from flask import Flask, request,render_template
 
 
@@ -9,8 +10,11 @@ def hello():
 
 
 
-@app.route("/pisos")
+@app.route("/pisos", methods=['POST'])
 def pisos():
-    return render_template('pisos.html', name='')
+    name = request.form['name']
+    card = request.form['y']
+    pincode = request.form['t']
+    return render_template('pisos.html', name = name, card = card)
 
 app.run()
